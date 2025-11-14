@@ -1,3 +1,9 @@
+;; Configure CFFI library paths for BSD systems before loading cl-charms
+;; BSD systems install libraries in /usr/local/lib, not /usr/lib
+#+(or freebsd openbsd netbsd dragonfly)
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (pushnew #P"/usr/local/lib/" cffi:*foreign-library-directories* :test #'equal))
+
 (ql:quickload :lem-sdl2)
 (ql:quickload :lem-ncurses)
 
