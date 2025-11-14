@@ -1,3 +1,6 @@
+;; Load CFFI first so we can configure it for BSD systems
+(ql:quickload :cffi)
+
 ;; Configure CFFI library paths for BSD systems before loading cl-charms
 ;; BSD systems install libraries in /usr/local/lib, not /usr/lib
 #+(or freebsd openbsd netbsd dragonfly)
