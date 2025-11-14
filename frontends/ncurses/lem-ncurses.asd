@@ -1,9 +1,3 @@
-;; Pre-configure CFFI library paths for BSD systems before loading cl-charms
-;; BSD systems typically install libraries in /usr/local/lib
-#+(or freebsd openbsd netbsd dragonfly)
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  (pushnew #P"/usr/local/lib/" cffi:*foreign-library-directories* :test #'equal))
-
 (defsystem "lem-ncurses"
   :depends-on ("cffi"
                "cl-charms"
